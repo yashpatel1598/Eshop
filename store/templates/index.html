@@ -1,0 +1,22 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<div class="contaniner-fluid mt-2">
+    <div class="row mx-auto">
+        {% for product in prodcuts %}
+        <div class="card mx-auto mb-4 text-center" style="width: 15rem;">
+            <img src="{{product.image.url}}" class="card-img-top " alt="...">
+            <div class="card-body ">
+                <h5 class="card-title">{{product.name}}</h5>
+                <h5 class="card-title"><b>${{product.price}}</b></h5>
+                <p class="card-text">{{product.description}}</p>
+                <a href="#" class="btn btn-light border btn-sn">Add To Cart</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+    
