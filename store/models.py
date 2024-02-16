@@ -5,6 +5,10 @@ from django.db import models
 class  Category(models.Model):
     name = models.CharField(max_length=20)
 
+    @staticmethod
+    def getall_category():
+        return Category.objects.all()
+
     def  __str__(self):
         return  self.name
 
@@ -21,4 +25,16 @@ class  Product(models.Model):
     @staticmethod
     def getall_prodcuts():
         return Product.objects.all()
+    
+    @staticmethod
+    def getall_prodcuts_by_id(category_id):
+        if category_id:
+            return Product.objects.filter(Category = category_id)
+        else :
+            return Product.objects.all()
 
+class Customer(models.Model):
+    firstName = models.CharField(max_length=30)
+    lastName = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
+    phoneNumber = models.CharField(max_length=16)
