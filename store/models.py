@@ -37,4 +37,22 @@ class Customer(models.Model):
     firstName = models.CharField(max_length=30)
     lastName = models.CharField(max_length=30)
     email = models.EmailField(unique=True)
-    phoneNumber = models.CharField(max_length=16)
+    phoneNumber = models.CharField(max_length=15)
+    password = models.CharField(max_length=200)
+
+    def  __str__(self):
+        return f'{self.firstName} {self.lastName}'
+
+    @staticmethod
+    def createCustomer(customerData):
+        newCustomer = Customer(**customerData)
+        newCustomer.save()
+        return newCustomer
+    
+    @staticmethod
+    def checkemail(email):
+        customerByEmail = Customer.objects.filter(email = email).first()
+        if customerByEmail:
+            return customerByEmail
+        else:
+            return False

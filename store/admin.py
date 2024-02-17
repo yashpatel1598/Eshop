@@ -7,3 +7,4 @@ class AdminProduct(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Product,AdminProduct)
 admin.site.register(Category)
+admin.site.register(Customer)
